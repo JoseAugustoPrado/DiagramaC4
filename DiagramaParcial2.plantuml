@@ -1,0 +1,17 @@
+@startuml C4_Elements
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+    Component(Raspberry, "Raspberry")
+    Component(IoTHub, "IoTHub")
+    Component(ServiceBus, "ServiceBus\nQueue Kardashian")
+    Component(LogicAPP, "LogicAPP")
+    Component(BD1, "BD1 Saturn")
+    Component(BD2, "BD2 Replica")
+
+Rel_Down(Raspberry, IoTHub, "Conecta")
+Rel_Down(IoTHub, ServiceBus, "Envia Datos")
+Rel_Down(ServiceBus, LogicAPP, "Envia Datos")
+Rel_Down(LogicAPP, BD1, "Almacena mensaje")
+Rel_Down(BD1, BD2, "Replica Mensaje")
+
+@enduml
